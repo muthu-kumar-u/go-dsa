@@ -12,7 +12,7 @@ This module contains fundamental array operations and problems.
 
 - Traversals (forward/backward)
 - Insertion and deletion
-- Searching (linear, binary)
+- Searching (linear, binary...)
 - Sorting (bubble, merge, quick)
 - Sliding Window
 - Two Pointers

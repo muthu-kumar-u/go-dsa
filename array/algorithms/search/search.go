@@ -1,6 +1,9 @@
 package search
 
-import "sort"
+import (
+	"math"
+	"sort"
+)
 
 type Item struct {
 	ID   int
@@ -162,10 +165,6 @@ func (s *Search) SearchInsertPositionBinary(tId int, name string) int {
 }
 
 func (s *Search) SearchRotatedArrayBinary(tId int, arr []Item) int {
-	if len(arr) == 0 {
-		return -1
-	}
-    
 	// arr is example = [4, 5, 6, 7, 0, 1, 2] and tId is 0
 	start, end := 0, len(arr)-1
 	for start <= end {
@@ -190,6 +189,50 @@ func (s *Search) SearchRotatedArrayBinary(tId int, arr []Item) int {
 
 	return -1
 }
+
+func (s *Search) FindPeakElementIndexInUnsortedUsingBinary() int { // 
+	start, end := 0, len(*s.Items) - 1
+
+	for start < end {
+		mid := (start + end) / 2
+		if (*s.Items)[mid].ID > (*s.Items)[mid + 1].ID {
+			end = mid
+		} else {
+			start = mid + 1
+		}
+	}
+
+	return start
+}
+
+func (s *Search) JumpSearch(tId int) int { // sorted array
+	sorted := s.sort()
+	jump := int(math.Floor(math.Sqrt(float64(len(sorted)))))
+
+	var start, end int
+
+	for i := 0; i < len(sorted); i+=jump { // O √n
+		if sorted[i].ID == tId {
+			return i
+		} else if sorted[i].ID >= tId || i == len(sorted) -1  {
+			start = i - jump
+			if start < 0 {
+				start = 0
+			}
+
+			end = i
+			break
+		}
+	}
+
+	for i := start; i <= end; i++ { // O (n)
+		if sorted[i].ID == tId {
+			return start
+		}
+	}
+
+	return -1
+} 
 
 func (s *Search) sort() []Item {
 	if len(*s.Items) == 0 {
