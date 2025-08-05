@@ -4,20 +4,14 @@ This module contains fundamental array operations and problems.
 
 ## Structure
 
-- `algorithms/`: Reusable logic like sorting, binary search, etc.
-- `problems/`: LeetCode/GeeksforGeeks-style problems
-- `tests/`: Unit tests (optional)
+- `algorithms/`: Reusable logic like sorting, searching, etc.
+- `basic/`: All basic operations covered in array.
 
 ## Topics Covered
 
-- Traversals (forward/backward)
-- Insertion and deletion
+- Insertion and deletion and all basic operations
 - Searching (linear, binary...)
 - Sorting (bubble, merge, quick)
-- Sliding Window
-- Two Pointers
-- Prefix Sum
-- Kadane’s Algorithm
 
 ## Searching Algorithms
 
@@ -31,3 +25,16 @@ This module contains fundamental array operations and problems.
 - Jump Search
 - Exponential Search
 - Ternary Search
+
+## Sorting Algorithms
+
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
+- Heap Sort
+- Radix Sort
+- Counting Sort
+- Bucket Sort
+- Tim Sort
