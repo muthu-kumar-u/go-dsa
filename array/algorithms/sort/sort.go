@@ -62,3 +62,52 @@ func (s *Sort) InsertionSort(arr []int) []int {
 	return arr
 }
 
+func (s *Sort) MergeSort(arr []int) []int {
+	if len(arr) == 1 { // on single element case
+		return arr
+	}
+
+	mid := len(arr) / 2
+	leftHalf := arr[:mid]
+	rightHalf := arr[mid:]
+
+	s.MergeSort(leftHalf)
+	s.MergeSort(rightHalf)
+	s.merge(leftHalf, rightHalf, arr)
+
+	return arr
+}
+
+func (s *Sort) merge(lH, rH, arr []int) {
+	i, j, k := 0, 0, 0
+
+	// compare elements from both halves
+	for i < len(lH) && j < len(rH) {
+		if lH[i] < rH[j] {
+            arr[k] = lH[i]
+            i++
+        } else {
+            arr[k] = rH[j]
+            j++
+        }
+        k++
+	}	
+
+	// copy remaining from left half
+	for i < len(lH) {
+		arr[k] = lH[i]
+		i++ 
+		k++
+	}
+
+	// copy remaining from right half
+	for j < len(rH) {
+		arr[k] = rH[j]
+		j++ 
+		k++
+	}
+}
+
+func (s *Sort) QuickSort(arr []int) []int {
+	return arr
+}
