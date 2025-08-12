@@ -1,5 +1,9 @@
 package sort
 
+import (
+	"math/rand/v2"
+)
+
 type Sort struct {}
 
 // BubbleSort is a simple comparison-based sorting algorithm.
@@ -63,7 +67,7 @@ func (s *Sort) InsertionSort(arr []int) []int {
 }
 
 func (s *Sort) MergeSort(arr []int) []int {
-	if len(arr) == 1 { // on single element case
+	if len(arr) <= 1 { // on single element case
 		return arr
 	}
 
@@ -109,5 +113,33 @@ func (s *Sort) merge(lH, rH, arr []int) {
 }
 
 func (s *Sort) QuickSort(arr []int) []int {
+	if len(arr) <= 1 {
+		return arr
+	}
+
+	randomPivot := rand.IntN(len(arr))
+	arr[randomPivot], arr[len(arr)-1] = arr[len(arr)-1], arr[randomPivot]
+	
+	pivotIndex := s.partition(arr)
+	s.QuickSort(arr[:pivotIndex])
+	s.QuickSort(arr[pivotIndex+1:])
+
 	return arr
+}
+
+func (s *Sort) partition(arr []int) int {
+	pivotValue := arr[len(arr)-1]
+	i, storeIndex := 0, 0
+
+	for i < len(arr) - 1 {
+		if arr[i] < pivotValue {
+			arr[i], arr[storeIndex] = arr[storeIndex], arr[i]
+			storeIndex++ 
+		}
+
+		i++
+	}
+	
+	arr[storeIndex], arr[len(arr)-1] = arr[len(arr)-1], arr[storeIndex]
+	return storeIndex
 }
