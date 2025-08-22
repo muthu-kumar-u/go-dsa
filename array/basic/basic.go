@@ -3,7 +3,7 @@ package basic
 import (
 	"log"
 
-	constants "github.com/muthu-kumar-u/go-dsa/const"
+	constants "github.com/muthu-kumar-u/go-dsa-impl/const"
 )
 
 type Basic struct {

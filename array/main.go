@@ -1,6 +1,6 @@
 package main
 
-import "github.com/muthu-kumar-u/go-dsa/array/basic"
+import "github.com/muthu-kumar-u/go-dsa-impl/array/basic"
 
 func main() {
 	b := basic.Basic{
